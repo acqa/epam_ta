@@ -41,6 +41,8 @@ class Application:
 		wd = self.wd
 		wd.get(url)		
 
+	
+
 
 	def destroy(self):
 		'''

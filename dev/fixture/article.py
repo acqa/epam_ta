@@ -17,7 +17,7 @@ class ArticleHelper:
 		wd.find_element_by_xpath("//*[text() ='Опубликовать...']").click()
 		wd.find_element_by_xpath("//*[text() ='Опубликовать']").click()
 		time.sleep(1) # Можно регулировать падение теста. При == 0 упадет, == 1 возможно упадет, =< 3 не упадет.
-		#wd.find_element_by_xpath("//*[@id='wp-admin-bar-site-name']/a").click()
+		wd.find_element_by_xpath("//*[@id='wp-admin-bar-site-name']/a").click()
 		
 
 	def check(self, articleTitle, articleText):
@@ -28,3 +28,8 @@ class ArticleHelper:
 		self.actualNote = self.textSite.get_attribute('innerText')
 		assert self.actualNote == articleText
 
+
+	def count(self):
+		wd = self.app.wd
+		self.app.open_home_page()
+		return len(wd.find_elements_by_xpath('//h2[@class="entry-title"]/a'))

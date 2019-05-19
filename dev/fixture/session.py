@@ -17,11 +17,13 @@ class SessionHelper:
 		wd.find_element_by_id('user_login').send_keys(username)
 		wd.find_element_by_id('user_pass').send_keys(password)
 		wd.find_element_by_id('wp-submit').click()
+		self.app.open_home_page()
+
 
 	def logout(self):
 		wd = self.app.wd
 		self.app.open_home_page()
-		time.sleep(1)
+		#time.sleep(1)
 		wd.find_element_by_link_text('Selenium TA site').send_keys(Keys.PAGE_DOWN)
 		wd.find_element_by_link_text('Выйти').click()
 		wd.find_element_by_xpath('//*[@id="backtoblog"]/a')
