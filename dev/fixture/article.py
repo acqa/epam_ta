@@ -16,7 +16,7 @@ class ArticleHelper:
 		wd.find_element_by_xpath('//p[@role="textbox"]').send_keys(articleText)
 		wd.find_element_by_xpath("//*[text() ='Опубликовать...']").click()
 		wd.find_element_by_xpath("//*[text() ='Опубликовать']").click()
-		time.sleep(1) # Можно регулировать падение теста. При == 0 упадет, == 1 возможно упадет, =< 3 не упадет.
+		time.sleep(2) # Можно регулировать падение теста: При == 0 упадет, == 1 возможно упадет, =< 3 не упадет.
 		wd.find_element_by_xpath("//*[@id='wp-admin-bar-site-name']/a").click()
 		
 
