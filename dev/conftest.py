@@ -3,9 +3,6 @@ import pytest
 import time
 import json
 
-testLogin = 'test_user'
-testPassword = '12345'
-
 
 fixture = None
 target = None
@@ -21,8 +18,8 @@ def app(request):
 	global target
 	browser = request.config.getoption('--browser') # Задаем название браузера в опции командной строки
 	if target is None:
-		with open(request.config.getoption('--target')) as config_file: # Загружаем конфиг. файл
-			target = json.load(config_file)
+		with open(request.config.getoption('--target')) as f: # Загружаем конфиг. файл
+			target = json.load(f)
 	if fixture is None or not fixture.is_valid(): # При первом запуске - из глобальной переменной
 		fixture = Application(browser = browser, base_url = target["baseUrl"])
 		fixture.session.login(username = target["username"], password = target["password"])
