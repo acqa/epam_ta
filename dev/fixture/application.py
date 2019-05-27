@@ -13,11 +13,16 @@ class Application:
 	'''
 	Слой вспомогательных методов
 	'''
-	def __init__(self):
+	def __init__(self, browser = 'chrome'):
 		'''
 		Конструктор инициализации драйвера и помощников
 		'''
-		self.wd = webdriver.Chrome()
+		if browser == 'chrome':
+			self.wd = webdriver.Chrome()
+		elif browser == 'firefox':
+			self.wd = webdriver.Firefox()
+		else:
+			raise ValueError("Unrecognized browser %s" % browser)
 		self.wd.implicitly_wait(10)
 		self.session = SessionHelper(self)
 		self.article = ArticleHelper(self)
