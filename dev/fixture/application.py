@@ -13,9 +13,10 @@ class Application:
 	'''
 	Слой вспомогательных методов
 	'''
-	def __init__(self, browser = 'chrome'):
+	def __init__(self, browser, base_url):
 		'''
 		Конструктор инициализации драйвера и помощников
+		у параметра browser есть дефолтное значение, которое задается при описании опций в conftest.py - def pytest_addoption(parser)
 		'''
 		if browser == 'chrome':
 			self.wd = webdriver.Chrome()
@@ -27,6 +28,7 @@ class Application:
 		self.session = SessionHelper(self)
 		self.article = ArticleHelper(self)
 		self.comment = CommentHelper(self)
+		self.base_url = base_url
 
 
 	def is_valid(self):
@@ -36,17 +38,17 @@ class Application:
 		except:
 			return False
 
-	def open_home_page(self, url = 'http://v999140x.beget.tech'):
+	def open_home_page(self):
 		wd = self.wd
-		wd.get(url)
+		wd.get(self.base_url)
 
-	def open_login_page(self, url = 'http://v999140x.beget.tech/wp-login.php'):
+	def open_login_page(self):
 		wd = self.wd
-		wd.get(url)		
+		wd.get(self.base_url + '/wp-login.php')		
 
-	def open_concole_page(self, url = 'http://v999140x.beget.tech/wp-admin/'):
+	def open_concole_page(self):
 		wd = self.wd
-		wd.get(url)		
+		wd.get(self.base_url + '/wp-admin/')		
 
 	
 
