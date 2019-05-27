@@ -1,31 +1,14 @@
 from fixture.application import Application
 import pytest
 import time
+import json
 
 testLogin = 'test_user'
 testPassword = '12345'
 
 
 fixture = None
-
-# @pytest.fixture()
-# def app(request):
-# 	'''
-# 	Интеллектуальная фикстура, с проверкой валидности. 
-# 	Создает одну сессию для всех тестов без scope = 'session'
-# 	'''
-# 	global fixture
-# 	if fixture is None: # При первом запуске - из глобальной переменной
-# 		browser = request.config.getoption('--browser') # Задаем название браузера в опции командной строки
-# 		fixture = Application(browser = browser)
-# 		fixture.session.login(username = testLogin, password = testPassword)
-# 	else:
-# 		if not fixture.is_valid(): # Если упала, то в методе application.Application получаем False
-# 			browser = request.config.getoption('--browser')
-# 			fixture = Application(browser = browser)
-# 			fixture.session.login(username = testLogin, password = testPassword)
-# 	return fixture
-
+target = None
 
 @pytest.fixture()
 def app(request):
@@ -35,11 +18,14 @@ def app(request):
 	Переработана
 	'''
 	global fixture
+	global target
 	browser = request.config.getoption('--browser') # Задаем название браузера в опции командной строки
-	base_url = request.config.getoption('--baseUrl') # Задаем адрес сайта в опции командной строки
+	if target is None:
+		with open(request.config.getoption('--target')) as config_file: # Загружаем конфиг. файл
+			target = json.load(config_file)
 	if fixture is None or not fixture.is_valid(): # При первом запуске - из глобальной переменной
-		fixture = Application(browser = browser, base_url = base_url)
-		fixture.session.login(username = testLogin, password = testPassword)
+		fixture = Application(browser = browser, base_url = target["baseUrl"])
+		fixture.session.login(username = target["username"], password = target["password"])
 	return fixture
 
 
@@ -60,5 +46,5 @@ def pytest_addoption(parser):
 	Функция pytest-а для добавления опций в командной строке
 	'''
 	parser.addoption('--browser', action = 'store', default = 'chrome') # выбор браузера
-	parser.addoption('--baseUrl', action = 'store', default = 'http://v999140x.beget.tech') # задание адреса сайта
+	parser.addoption('--target', action = 'store', default = 'target.json') # загрузка параметров из конфиг. файла
 
