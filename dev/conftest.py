@@ -35,9 +35,9 @@ def app(request):
 	Переработана
 	'''
 	global fixture
+	browser = request.config.getoption('--browser') # Задаем название браузера в опции командной строки
+	base_url = request.config.getoption('--baseUrl') # Задаем адрес сайта в опции командной строки
 	if fixture is None or not fixture.is_valid(): # При первом запуске - из глобальной переменной
-		browser = request.config.getoption('--browser') # Задаем название браузера в опции командной строки
-		base_url = request.config.getoption('--baseUrl')
 		fixture = Application(browser = browser, base_url = base_url)
 		fixture.session.login(username = testLogin, password = testPassword)
 	return fixture
