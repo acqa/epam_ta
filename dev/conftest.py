@@ -1,7 +1,7 @@
 from fixture.application import Application
 import pytest
-import time
 import json
+import os.path
 
 
 fixture = None
@@ -18,7 +18,9 @@ def app(request):
 	global target
 	browser = request.config.getoption('--browser') # Задаем название браузера в опции командной строки
 	if target is None:
-		with open(request.config.getoption('--target')) as f: # Загружаем конфиг. файл
+		# Определяем текущую директорию файла conftest.py
+		config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), request.config.getoption("--target"))
+		with open(config_file) as f: # Загружаем конфиг. файл
 			target = json.load(f)
 	if fixture is None or not fixture.is_valid(): # При первом запуске - из глобальной переменной
 		fixture = Application(browser = browser, base_url = target["baseUrl"])
