@@ -2,6 +2,7 @@ from fixture.application import Application
 import pytest
 import json
 import os.path
+import importlib
 
 
 fixture = None
@@ -28,7 +29,7 @@ def app(request):
 	return fixture
 
 
-			
+
 @pytest.fixture(scope = 'session', autouse = True)
 def stop(request):
 	'''
@@ -47,3 +48,16 @@ def pytest_addoption(parser):
 	parser.addoption('--browser', action = 'store', default = 'chrome') # выбор браузера
 	parser.addoption('--target', action = 'store', default = 'target.json') # загрузка параметров из конфиг. файла
 
+
+def pytest_generate_tests(metafunc):
+	'''
+	Функция производит загрузку тестовых данных из файла articles.py в пакете data
+	Но как работает еще не понял. Урок 31
+	'''
+	for fixture in metafunc.fixturenames:
+		if fixture.startswith("data_"):
+			testdata = load_from_module(fixture[5:])
+			metafunc.parametrize(fixture, testdata, ids = [str(x) for x in testdata])
+
+def load_from_module(module):
+	return importlib.import_module("data.%s" % module).testdata

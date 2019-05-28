@@ -8,16 +8,17 @@ class ArticleHelper:
 
 	def create(self, article):
 		wd = self.app.wd
-		self.app.open_concole_page()
-		wd.find_element_by_id('menu-posts').click()
-		wd.find_element_by_link_text('Добавить новую').click()
-		#wd.find_element_by_xpath("//button[@aria-label = 'Отключить советы']").click()
+		# self.app.open_concole_page()
+		# wd.find_element_by_id('menu-posts').click()
+		# wd.find_element_by_link_text('Добавить новую').click()
+		# #wd.find_element_by_xpath("//button[@aria-label = 'Отключить советы']").click()
+		self.app.open_new_post_page()
 		wd.find_element_by_id('post-title-0').send_keys(article.title + Keys.TAB + Keys.TAB + Keys.TAB)
 		wd.find_element_by_xpath('//p[@role="textbox"]').send_keys(article.note)
 		wd.find_element_by_xpath("//*[text() ='Опубликовать...']").click()
 		wd.find_element_by_xpath("//*[text() ='Опубликовать']").click()
 		time.sleep(2) # Можно регулировать падение теста в Chrome: При == 0 упадет, == 1 возможно упадет, =< 3 не упадет.
-		wd.find_element_by_xpath("//*[@id='wp-admin-bar-site-name']/a").click()
+		# wd.find_element_by_xpath("//*[@id='wp-admin-bar-site-name']/a").click()
 		
 
 	def check(self, article):

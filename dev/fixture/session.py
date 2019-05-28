@@ -8,19 +8,21 @@ class SessionHelper:
 
 	def login(self, username, password):
 		wd = self.app.wd
-		self.app.open_home_page()
-		try:
-			wd.find_element_by_link_text('Selenium TA site').send_keys(Keys.PAGE_DOWN)
-			wd.find_element_by_link_text('Войти').click()
-		except: self.app.open_login_page()
+		# self.app.open_home_page()
+		# try:
+		# 	wd.find_element_by_link_text('Selenium TA site').send_keys(Keys.PAGE_DOWN)
+		# 	wd.find_element_by_link_text('Войти').click()
+		# except: self.app.open_login_page()
+		self.app.open_login_page()
 		time.sleep(1)
 		wd.find_element_by_id('user_login').send_keys(username)
 		wd.find_element_by_id('user_pass').send_keys(password)
 		wd.find_element_by_id('wp-submit').click()
-		wd.find_element_by_id('menu-posts').click()
-		wd.find_element_by_link_text('Добавить новую').click()
+		self.app.open_new_post_page()
+		# wd.find_element_by_id('menu-posts').click()
+		# wd.find_element_by_link_text('Добавить новую').click()
 		wd.find_element_by_xpath("//button[@aria-label = 'Отключить советы']").click()
-		self.app.open_home_page()
+		# self.app.open_home_page()
 
 
 	def logout(self):

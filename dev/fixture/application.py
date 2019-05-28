@@ -50,7 +50,9 @@ class Application:
 		wd = self.wd
 		wd.get(self.base_url + '/wp-admin/')		
 
-	
+	def open_new_post_page(self):
+		wd = self.wd
+		wd.get(self.base_url + '/wp-admin/post-new.php')
 
 
 	def destroy(self):
