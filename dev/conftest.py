@@ -47,7 +47,7 @@ def pytest_addoption(parser):
 	Функция pytest-а для добавления опций в командной строке
 	'''
 	parser.addoption('--browser', action = 'store', default = 'chrome') # выбор браузера
-	parser.addoption('--target', action = 'store', default = 'target.json') # загрузка параметров из конфиг. файла
+	parser.addoption('--target', action = 'store', default = 'config/target.json') # загрузка параметров из конфиг. файла
 
 
 def pytest_generate_tests(metafunc):

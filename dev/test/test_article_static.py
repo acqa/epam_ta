@@ -15,6 +15,7 @@
 # def test_create_article(app):
 # 	app.article.create(articleTitle=testdata['testTitle'], articleText=testdata['testNote'])
 # 	# app.article.create(Article(title=testdata['testTitle'], note=testdata['testNote']))
+#   # add assert
 #
 #
 #

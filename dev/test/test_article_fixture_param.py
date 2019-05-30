@@ -10,9 +10,11 @@ pytest_generate_tests.
 def test_create_article(app, data_articles):
 	article = data_articles
 	app.article.create(article)
+	# add assert
 
 
 def test_check_article(app, data_for_comments):
 	article = data_for_comments
 	app.article.create(article)
 	app.article.check(article)
+	# add assert
