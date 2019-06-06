@@ -1,51 +1,28 @@
 from pages.base_page import BasePage
+import time
 
 
 class HomePage(BasePage):
 
     def __init__(self, app):
+        """Инициируем фикстуру арр и и получаем вебдрайвер из объекта фикстуры self.app.wd"""
         self.app = app
 
-        def open(self):
-            wd = self.app.wd
-            wd.get(self.base_url)
+    def open(self):
+        self.app.wd.get(self.app.base_url)
 
 
-        # def open(self):
-        #     super().navigate_to(app.base_url)
-        #     return self
-        #
-
     #
+    # def loginField(self):
+    #     return self.app.wd.find_element_by_id('user_login')
     #
-    # def open(self):
-    #     super().navigate_to(super()._URL)
+    # def passField(self):
+    #     return self.app.wd.find_element_by_id('user_pass')
     #
+    # def submit(self):
+    #     return self.app.wd.find_element_by_id('wp-submit')
     #
-    #
-    #
-    #
-    #
-    # class SearchPage(BasePage):
-    #
-    #     def __init__(self, app):
-    #         self.app = app
-    #
-    #         self.base_url
-    #
-    #     _search_field = (By.ID, "search_form_input_homepage")
-    #
-    #     def open(self):
-    #         super().navigate_to(app.base_url)
-    #         return self
-    #
-    #     @allure.step("search for {text}")
-    #     def search_for(self, text):
-    #         super().get_element(self._search_field).send_keys(text)
-    #         super().get_element(self._search_field).submit()
-    #         return ResultPage(self._driver)
-
-
-# def open_home_page(self):
-#     wd = self.wd
-#     wd.get(self.base_url)
+    # def doLogin(self):
+    #     self.loginField().send_keys("test_user")
+    #     self.passField().send_keys("12345")
+    #     self.submit().click()

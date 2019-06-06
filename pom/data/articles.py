@@ -3,7 +3,7 @@ from model.article import Article
 import random
 import string
 
-# START Uses for dev/test/test_artiicle_parametrize.py
+# START Uses for dev/tests/test_artiicle_parametrize.py
 testdata_static_1 = [
 	Article(title = 'First title', note = 'First note'),
 	Article(title = 'Empty note', note = ''),
@@ -27,7 +27,7 @@ testdata_random_1 = [
 
 
 
-# START Uses for dev/test/test_article_fixture_param.py
+# START Uses for dev/tests/test_article_fixture_param.py
 testdata = [
 	Article(title = 'First title', note = 'First note'),
 	Article(title = 'Empty note', note = ''),
@@ -36,7 +36,7 @@ testdata = [
 # END
 
 
-# START Uses for test comment
+# START Uses for tests comment
 testdata_comment = [
 	Article(title='Test comment title ' + str(time.time()), note='Test comment note ' + str(time.localtime()))
 ]

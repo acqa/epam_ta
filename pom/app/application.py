@@ -12,41 +12,28 @@ import time
 from pages.base_page import BasePage
 from pages.home_page import HomePage
 from pages.login_page import LoginPage
+from pages.admin_page import AdminPage
 from pages.post_page import PostPage
+from pages.article_page import ArticlePage
 
 
-class Application:
+class App:
 	'''
 	Слой вспомогательных методов
 	'''
-	def __init__(self, browser, base_url):
-		'''
-		Конструктор инициализации драйвера и помощников
-		у параметра browser есть дефолтное значение, которое задается при описании опций в conftest.py - def pytest_addoption(parser)
-		'''
-		if browser == 'chrome':
-			self.wd = webdriver.Chrome()
-		elif browser == 'firefox':
-			self.wd = webdriver.Firefox()
-		else:
-			raise ValueError("Unrecognized browser %s" % browser)
-		self.wd.implicitly_wait(10)
-		self.session = Session(self)
-		# self.article = ArticleHelper(self)
-		# self.comment = CommentHelper(self)
+	def __init__(self, base_url):
+		"""Инициируем вебдрайвер
+		base_url берется из фикстуры
+		"""
+		self.wd = webdriver.Chrome()
+		self.wd.implicitly_wait(5)
 		self.base_url = base_url
-		self.base_page = BasePage(self)
-		self.home_page = HomePage(self)
 		self.login_page = LoginPage(self)
+		self.home_page = HomePage(self)
+		self.admin_page = AdminPage(self)
 		self.post_page = PostPage(self)
+		self.article_page = ArticlePage(self)
 
-
-	def is_valid(self):
-		try:
-			self.wd.current_url
-			return True
-		except:
-			return False
 
 	def open_home_page(self):
 		wd = self.wd
@@ -54,11 +41,11 @@ class Application:
 
 	def open_login_page(self):
 		wd = self.wd
-		wd.get(self.base_url + '/wp-login.php')		
+		wd.get(self.base_url + '/wp-login.php')
 
 	def open_concole_page(self):
 		wd = self.wd
-		wd.get(self.base_url + '/wp-admin/')		
+		wd.get(self.base_url + '/wp-admin/')
 
 	def open_new_post_page(self):
 		wd = self.wd
