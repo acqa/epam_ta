@@ -8,13 +8,6 @@ class BasePage:
     def __init__(self, app):
         self.app = app
 
-
-
-    # _URL = "http://duckduckgo.com"
-    #
-    # def __init__(self, driver: WebDriver) -> None:
-    #     self._driver = driver
-
     def navigate_to(self, url):
         wd = self.app.wd
         wd.get(url)
@@ -29,6 +22,3 @@ class BasePage:
             ex_cond.visibility_of_any_elements_located(locator), ' : '.join(locator))
 
 
-# def open_home_page(self):
-#     wd = self.wd
-#     wd.get(self.base_url)
