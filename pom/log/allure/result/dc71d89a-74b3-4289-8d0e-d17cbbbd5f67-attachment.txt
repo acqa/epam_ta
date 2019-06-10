@@ -1,2 +1,0 @@
-
-test duration : 0.0135 seconds

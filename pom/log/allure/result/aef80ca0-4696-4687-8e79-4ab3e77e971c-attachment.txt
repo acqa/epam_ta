@@ -1,5 +1,0 @@
-
-test duration : 3.73 seconds
---
-finished : 07 Jun 17:56:14
------------------
