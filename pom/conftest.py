@@ -2,6 +2,7 @@ from app.application import App
 import pytest
 import os.path
 import time
+import os
 
 
 #testdata
@@ -16,6 +17,9 @@ def app(request):
 	fixture.post_page.fix_close_advice_popup()
 	yield fixture
 	fixture.destroy()
+
+
+
 
 
 # @pytest.fixture(scope="function", autouse=True)
@@ -39,6 +43,13 @@ def app(request):
 #             if request.node.rep_call.failed:
 #                 allure.attach(request.function.__name__, attach, allure.attach_type.PNG)
 #     request.addfinalizer(fin)
+
+
+@pytest.fixture(autouse=True, scope='session')
+def generate_allure_report():
+    """Генерирует HTML отчет из результатов теста"""
+    yield
+    os.system("allure generate -c ../log/allure/result -o ../log/allure/report")
 
 
 
