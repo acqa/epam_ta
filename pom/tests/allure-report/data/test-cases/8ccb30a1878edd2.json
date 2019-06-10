@@ -1,0 +1,88 @@
+{
+  "uid" : "8ccb30a1878edd2",
+  "name" : "test_login",
+  "fullName" : "test#test_login",
+  "historyId" : "d18f1d766dc78ba5e54a3af868b0f06a",
+  "time" : {
+    "start" : 1559907037921,
+    "stop" : 1559907037922,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "app",
+    "time" : {
+      "start" : 1559907028713,
+      "stop" : 1559907037916,
+      "duration" : 9203
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "afterStages" : [ {
+    "name" : "app::0",
+    "time" : {
+      "start" : 1559907047648,
+      "stop" : 1559907047828,
+      "duration" : 180
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "test"
+  }, {
+    "name" : "host",
+    "value" : "Work-Mac-Mini.local"
+  }, {
+    "name" : "thread",
+    "value" : "85109-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "21f55fac5279a59d",
+      "status" : "passed",
+      "time" : {
+        "start" : 1559906975903,
+        "stop" : 1559906975903,
+        "duration" : 0
+      }
+    } ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "8ccb30a1878edd2.json",
+  "parameterValues" : [ ]
+}

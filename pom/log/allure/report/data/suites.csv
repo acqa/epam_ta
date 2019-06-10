@@ -1,0 +1,7 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Fri Jun 07 15:16:11 MSK 2019","Fri Jun 07 15:16:15 MSK 2019","4316","tests","test","","","","test_check_article",""
+"passed","Fri Jun 07 14:30:43 MSK 2019","Fri Jun 07 14:30:47 MSK 2019","4455","","test","","","","test_check_article",""
+"passed","Fri Jun 07 15:16:06 MSK 2019","Fri Jun 07 15:16:06 MSK 2019","0","tests","test","","","","test_login",""
+"passed","Fri Jun 07 14:30:37 MSK 2019","Fri Jun 07 14:30:43 MSK 2019","5254","","test","","","","test_create_article",""
+"passed","Fri Jun 07 15:16:06 MSK 2019","Fri Jun 07 15:16:11 MSK 2019","5026","tests","test","","","","test_create_article",""
+"passed","Fri Jun 07 14:30:37 MSK 2019","Fri Jun 07 14:30:37 MSK 2019","1","","test","","","","test_login",""

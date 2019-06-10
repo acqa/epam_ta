@@ -1,0 +1,91 @@
+{
+  "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+  "name" : "packages",
+  "children" : [ {
+    "name" : "test",
+    "children" : [ {
+      "name" : "test_login",
+      "uid" : "a99cb625d0436cd1",
+      "parentUid" : "d662795e8d349f9b5595bf62f43ea7ae",
+      "status" : "passed",
+      "time" : {
+        "start" : 1559907037921,
+        "stop" : 1559907037922,
+        "duration" : 1
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "test_create_article",
+      "uid" : "42adbf7951325605",
+      "parentUid" : "d662795e8d349f9b5595bf62f43ea7ae",
+      "status" : "passed",
+      "time" : {
+        "start" : 1559907037931,
+        "stop" : 1559907043185,
+        "duration" : 5254
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "test_check_article",
+      "uid" : "d76885412833f43d",
+      "parentUid" : "d662795e8d349f9b5595bf62f43ea7ae",
+      "status" : "passed",
+      "time" : {
+        "start" : 1559907043192,
+        "stop" : 1559907047647,
+        "duration" : 4455
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "d662795e8d349f9b5595bf62f43ea7ae"
+  }, {
+    "name" : "tests.test",
+    "children" : [ {
+      "name" : "test_login",
+      "uid" : "1b78b068681309a0",
+      "parentUid" : "a3536f5b294b9a0f71c98c978d0173f4",
+      "status" : "passed",
+      "time" : {
+        "start" : 1559909766634,
+        "stop" : 1559909766634,
+        "duration" : 0
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "test_create_article",
+      "uid" : "c7d6672fc0d27c92",
+      "parentUid" : "a3536f5b294b9a0f71c98c978d0173f4",
+      "status" : "passed",
+      "time" : {
+        "start" : 1559909766640,
+        "stop" : 1559909771666,
+        "duration" : 5026
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "test_check_article",
+      "uid" : "14f9af439eaa2401",
+      "parentUid" : "a3536f5b294b9a0f71c98c978d0173f4",
+      "status" : "passed",
+      "time" : {
+        "start" : 1559909771670,
+        "stop" : 1559909775986,
+        "duration" : 4316
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "tests.test"
+  } ]
+}

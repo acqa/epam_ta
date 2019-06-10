@@ -1,0 +1,88 @@
+{
+  "uid" : "d76885412833f43d",
+  "name" : "test_check_article",
+  "fullName" : "test#test_check_article",
+  "historyId" : "072a5c5947d76913acbb689221f4c61f",
+  "time" : {
+    "start" : 1559907043192,
+    "stop" : 1559907047647,
+    "duration" : 4455
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "app",
+    "time" : {
+      "start" : 1559907028713,
+      "stop" : 1559907037916,
+      "duration" : 9203
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "afterStages" : [ {
+    "name" : "app::0",
+    "time" : {
+      "start" : 1559907047648,
+      "stop" : 1559907047828,
+      "duration" : 180
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "test"
+  }, {
+    "name" : "host",
+    "value" : "Work-Mac-Mini.local"
+  }, {
+    "name" : "thread",
+    "value" : "85109-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "f2783a818a7a8361",
+      "status" : "passed",
+      "time" : {
+        "start" : 1559906981208,
+        "stop" : 1559906985851,
+        "duration" : 4643
+      }
+    } ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "d76885412833f43d.json",
+  "parameterValues" : [ ]
+}
