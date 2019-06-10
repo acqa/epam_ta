@@ -28,5 +28,5 @@ def test_check_article(app):
 	assert title == actualTitle or note == actualNote
 
 
-def test_eggs():
-    assert False
+# def test_eggs():
+#     assert False
