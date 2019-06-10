@@ -6,10 +6,9 @@ v5/test/.DS_Store
 dev/fixture/.DS_Store
 .idea/epam_ta.iml
 .DS_Store
-.DS_Store
-dev/geckodriver.log
-dev/geckodriver.log
-.DS_Store
-dev/geckodriver.log
+*.log
 .idea/workspace.xml
 .idea/workspace.xml
+/pom/log/allure/report/*
+/pom/log/allure/result/*
+/pom/log/screen/*
