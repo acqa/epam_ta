@@ -7,7 +7,6 @@ import time
 from fixture.session import SessionHelper
 from fixture.article import ArticleHelper
 from fixture.comment import CommentHelper
-from page import LoginPage
 
 
 class Application:
@@ -29,7 +28,6 @@ class Application:
 		self.session = SessionHelper(self)
 		self.article = ArticleHelper(self)
 		self.comment = CommentHelper(self)
-		self.login_page = LoginPage()
 		self.base_url = base_url
 
 

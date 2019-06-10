@@ -18,8 +18,6 @@ class SessionHelper:
 		wd.find_element_by_id('user_login').send_keys(username)
 		wd.find_element_by_id('user_pass').send_keys(password)
 		wd.find_element_by_id('wp-submit').click()
-
-
 		self.app.open_new_post_page()
 		# wd.find_element_by_id('menu-posts').click()
 		# wd.find_element_by_link_text('Добавить новую').click()
