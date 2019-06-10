@@ -1,14 +1,8 @@
 
-v4/.DS_Store
 *.pyc
-v4/test/.DS_Store
-v5/test/.DS_Store
-dev/fixture/.DS_Store
-.idea/epam_ta.iml
-.DS_Store
+*.idea/*
+*.DS_Store
 *.log
-.idea/workspace.xml
-.idea/workspace.xml
 /pom/log/allure/report/*
 /pom/log/allure/result/*
 /pom/log/screen/*
