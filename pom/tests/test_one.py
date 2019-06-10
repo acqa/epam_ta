@@ -1,6 +1,8 @@
+import pytest
+
 #testdata
 title = 'Title'
-note = ''
+note = 'Note'
 
 
 
@@ -25,3 +27,6 @@ def test_check_article(app):
 	actualNote = app.article_page.noteText()
 	assert title == actualTitle or note == actualNote
 
+
+# def test_eggs():
+#     assert False

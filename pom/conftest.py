@@ -1,111 +1,73 @@
 from app.application import App
 import pytest
-import json
-import jsonpickle
 import os.path
-import importlib
+import time
+import os
 
 
-# fixture = None
-# target = None
-# target = {
-# 	"baseUrl" : "http://v999140x.beget.tech",
-# 	"username" : "test_user",
-# 	"password" : "12345"
-#
-# }
-
+#testdata
 base_url = "http://v999140x.beget.tech"
-
+login ="test_user"
+password ="12345"
 
 @pytest.fixture(scope = 'session')
 def app(request):
-	app = App(base_url = base_url)
-	app.login_page.fix_login(login ="test_user", password ="12345")
-	app.post_page.fix_close_advice_popup()
-	yield app
-	app.destroy()
-
-
-# @pytest.fixture(scope = 'session', autouse = True)
-# def stop(request):
-# 	"""Завершаем браузер в конце тестов.
-# 	"""
-# 	def fin():
-# 		#fixture.session.logout()
-# 		app.destroy()
-# 	request.addfinalizer(fin)
-# 	return app
+	fixture = App(base_url = base_url)
+	fixture.login_page.fix_login(login = login, password = password)
+	fixture.post_page.fix_close_advice_popup()
+	yield fixture
+	fixture.destroy()
 
 
 
 
 
+# @pytest.fixture(scope="function", autouse=True)
+# def take_screenshot_when_failure(request):
+#
+# 	def tear_down():
+# 		path = os.path.dirname(__file__)
+# 		# if request.node.rep_call.failed:
+# 		fixture.wd.save_screenshot("%s/log/screen/scr_%s.png" % (path, time.time()))
+# 	request.addfinalizer(tear_down)
+# 	yield
 
-#
-#
-#
-# @pytest.fixture()
-# def app(request):
-# 	"""	Интеллектуальная фикстура, с проверкой валидности
-# 	Создает одну сессию для всех тестов без scope = 'session'
-# 	Переработана
-#
-# 	"""
-# 	global fixture
-# 	global target
-# 	browser = request.config.getoption('--browser') # Задаем название браузера в опции командной строки
-# 	if target is None:
-# 		# Определяем текущую директорию файла conftest.py
-# 		config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), request.config.getoption("--target"))
-# 		with open(config_file) as f: # Загружаем конфиг. файл
-# 			target = json.load(f)
-# 	if fixture is None or not fixture.is_valid(): # При первом запуске - из глобальной переменной
-# 		fixture = Application(browser = browser, base_url = target["baseUrl"])
-# 		fixture.session.login(username = target["username"], password = target["password"])
-# 	return fixture
-#
-#
-#
-# @pytest.fixture(scope = 'session', autouse = True)
-# def stop(request):
-# 	"""Завершаем браузер в конце тестов.
-# 	"""
-# 	def fin():
-# 		#fixture.session.logout()
-# 		fixture.destroy()
-# 	request.addfinalizer(fin)
-# 	return fixture
-#
-#
-# def pytest_addoption(parser):
-# 	"""Функция pytest-а для добавления опций в командной строке
-# 	"""
-# 	parser.addoption('--browser', action = 'store', default = 'chrome') # выбор браузера
-# 	parser.addoption('--target', action = 'store', default = 'config/target.json') # загрузка параметров из конфиг. файла
-#
-#
-# def pytest_generate_tests(metafunc):
-# 	"""	Функция производит загрузку тестовых данных из файла articles.py в пакете data (задается в тесте)
-# 	или из файла articles.json в из того же пакета.
-# 	"""
-# 	for fixture in metafunc.fixturenames:
-# 		if fixture.startswith("data_"):
-# 			testdata = load_from_module(fixture[5:])
-# 			metafunc.parametrize(fixture, testdata, ids = [str(x) for x in testdata])
-# 		elif fixture.startswith("json_"):
-# 			testdata = load_from_json(fixture[5:])
-# 			metafunc.parametrize(fixture, testdata, ids = [str(x) for x in testdata])
-#
-#
-# def load_from_module(module):
-# 	"""Производим загрузку тестовых данных из модуля
-# 	"""
-# 	return importlib.import_module("data.%s" % module).testdata
-#
-# def load_from_json(json_file):
-# 	"""Производим загрузку тестовых данных из json-файла
-# 	"""
-# 	with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data/%s.json" % json_file)) as f:
-# 		return jsonpickle.decode((f.read()))
-#
+# @pytest.fixture(autouse=True, scope="function")
+# def screenshot_on_failure(request):
+#     def fin():
+#         driver = App(base_url = base_url)
+#         attach = driver.get_screenshot_as_png()
+#         if request.node.rep_setup.failed:
+#             allure.attach(request.function.__name__, attach, allure.attach_type.PNG)
+#         elif request.node.rep_setup.passed:
+#             if request.node.rep_call.failed:
+#                 allure.attach(request.function.__name__, attach, allure.attach_type.PNG)
+#     request.addfinalizer(fin)
+
+
+@pytest.fixture(autouse=True, scope='session')
+def generate_allure_report():
+    """Генерирует HTML отчет из результатов теста"""
+    yield
+    os.system("allure generate -c ../log/allure/result -o ../log/allure/report")
+
+
+
+
+@pytest.fixture(autouse=True, scope='session')
+def footer_session_scope():
+    """Сообщает время в конце session(сеанса)."""
+    yield
+    now = time.time()
+    print('--')
+    print('finished : {}'.format(time.strftime('%d %b %X', time.localtime(now))))
+    print('-----------------')
+
+@pytest.fixture(autouse=True)
+def footer_function_scope():
+    """Сообщает продолжительность теста после каждой функции."""
+    start = time.time()
+    yield
+    stop = time.time()
+    delta = stop - start
+    print('\ntest duration : {:0.3} seconds'.format(delta))
